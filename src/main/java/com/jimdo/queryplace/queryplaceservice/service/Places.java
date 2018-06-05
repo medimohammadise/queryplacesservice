@@ -46,16 +46,15 @@ public interface Places {
 
 
     /**
-            * Returns the service at the specified latitude and longitude within the specified radius. No more than
-     * {@link #DEFAULT_RESULTS} will be returned and no more than one HTTP GET request will be sent.
-            *
-            * @param lat         latitude
-     * @param lng         longitude
-     * @param radius      radius
+     * Returns the places that match the specified search query.  If the specified limit
+     * is greater than {@link #MAXIMUM_PAGE_RESULTS}, multiple HTTP GET requests may be made if necessary.
+     *
+     * @param query       search query
+     * @param limit       the maximum amount of places to return
      * @param extraParams any extra parameters to include in the request URL
-     * @return a list of service that were found
+     * @return a list of places that were found
      */
-    List<Place> getNearbyPlaces(double lat, double lng, double radius);
+    List<Place> getPlacesByQuery(String query, int limit);
 
 
 
