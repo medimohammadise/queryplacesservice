@@ -23,7 +23,8 @@ public class GooglePlaceImpl implements Places {
      */
     public static String API_URL_FORMAT_STRING = "%s%s/json?%s";
 
-    private String apiKey="AIzaSyCViqQT_KOV8T0iQZ286VK7wqLVDQDeCVM";
+    private String apiKey;
+
 
     private RestTemplate restTemplate;
 
