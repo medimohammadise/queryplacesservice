@@ -18,8 +18,13 @@ public class GooglePlacesResource {
         this.places=places;
     }
 
-    @GetMapping("/nearbyPlaces")
-    public List<Place> getNearbyPlaces(@RequestParam String query){
+    @GetMapping("/place")
+    public List<Place> getPlace(@RequestParam String query){
         return places.getPlacesByQuery(query,1);
+    }
+
+    @GetMapping("/placeDetails")
+    public Place getPlaceDetails(@RequestParam String query){
+        return places.getPlacesByQueryDetails(query,1);
     }
 }

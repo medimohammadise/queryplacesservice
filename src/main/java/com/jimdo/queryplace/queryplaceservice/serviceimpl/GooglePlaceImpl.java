@@ -1,16 +1,14 @@
 package com.jimdo.queryplace.queryplaceservice.serviceimpl;
 
 import com.jimdo.queryplace.queryplaceservice.domain.Place;
+import com.jimdo.queryplace.queryplaceservice.dto.PlaceDetailResponse;
 import com.jimdo.queryplace.queryplaceservice.dto.PlaceResponse;
 import com.jimdo.queryplace.queryplaceservice.service.Places;
-import org.springframework.context.annotation.Conditional;
-import org.springframework.http.HttpMethod;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -22,8 +20,9 @@ public class GooglePlaceImpl implements Places {
      * Argument #3: API Method arguments
      */
     public static String API_URL_FORMAT_STRING = "%s%s/json?%s";
+    private final Logger log=LoggerFactory.getLogger(getClass());
 
-    private String apiKey;
+    private String apiKey="AIzaSyCViqQT_KOV8T0iQZ286VK7wqLVDQDeCVM";
 
 
     private RestTemplate restTemplate;
@@ -68,8 +67,29 @@ public class GooglePlaceImpl implements Places {
             e.printStackTrace();
             //throw new GooglePlacesException(e);
         }
-        return  response.getResults();
+        //TODO use exception handling framework to show exceptions
+            return  response.getResults();
+
     }
+
+    @Override
+    public Place getPlacesByQueryDetails(String placeId, int limit) {
+        PlaceDetailResponse response=null;
+        try {
+            String uri = buildUrl(METHOD_DETAILS, String.format("placeid=%s&key=%s", placeId, apiKey));
+            log.info(uri);
+            response = this.restTemplate.getForObject(uri, PlaceDetailResponse.class);
+            System.out.print(response);
+            //return getPlaces(uri, METHOD_TEXT_SEARCH, limit);
+        } catch (Exception e) {
+            e.printStackTrace();
+            //throw new GooglePlacesException(e);
+        }
+        //TODO use exception handling framework to show exceptions
+        return  response.getResult();
+
+    }
+
 
 
 }

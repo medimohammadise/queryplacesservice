@@ -56,6 +56,6 @@ public interface Places {
      */
     List<Place> getPlacesByQuery(String query, int limit);
 
-
+    Place getPlacesByQueryDetails(String query, int limit);
 
 }
