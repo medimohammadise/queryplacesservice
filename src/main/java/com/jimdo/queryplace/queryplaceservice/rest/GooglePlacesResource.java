@@ -1,13 +1,12 @@
 package com.jimdo.queryplace.queryplaceservice.rest;
 
-import com.jimdo.queryplace.queryplaceservice.domain.Place;
+import com.jimdo.queryplace.queryplaceservice.dto.PlaceDetailResponse;
+import com.jimdo.queryplace.queryplaceservice.dto.PlaceResponse;
 import com.jimdo.queryplace.queryplaceservice.service.Places;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -19,12 +18,18 @@ public class GooglePlacesResource {
     }
 
     @GetMapping("/place")
-    public List<Place> getPlace(@RequestParam String query){
-        return places.getPlacesByQuery(query,1);
+    public PlaceResponse getPlace(@RequestParam String query){
+
+        return places.getPlacesByQuery(query);
     }
 
     @GetMapping("/placeDetails")
-    public Place getPlaceDetails(@RequestParam String query){
-        return places.getPlacesByQueryDetails(query,1);
+    public PlaceDetailResponse getPlaceDetails(@RequestParam String query){
+        return places.getPlacesByQueryDetails(query);
+    }
+
+    @GetMapping("/placeByradar")
+    public PlaceResponse getPlaceByRadar(@RequestParam double lat,@RequestParam double lng,@RequestParam double radius,@RequestParam  String type){
+        return places.getPlacesByRadar(lat, lng, radius,type);
     }
 }

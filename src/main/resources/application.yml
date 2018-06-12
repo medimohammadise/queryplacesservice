@@ -1,0 +1,8 @@
+application :
+  googlePlaceAPISetting :
+    apiKey  : AIzaSyCViqQT_KOV8T0iQZ286VK7wqLVDQDeCVM   #set your api key here
+    apiURL : https://maps.googleapis.com/maps/api/place/
+    place_search_method : textsearch
+    place_detail_method : details
+    radar_search_method : radarsearch
+

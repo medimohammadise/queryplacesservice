@@ -1,17 +1,16 @@
 package com.jimdo.queryplace.queryplaceservice.dto;
 
+import com.jimdo.queryplace.queryplaceservice.PlaceAPIProvider;
 import com.jimdo.queryplace.queryplaceservice.domain.Place;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlaceDetailResponse implements Serializable {
     private List<String> html_attributions;
     private Place result;
     private String status;
+    private PlaceAPIProvider provider;
 
     public List<String> getHtml_attributions() {
         return html_attributions;
@@ -35,6 +34,14 @@ public class PlaceDetailResponse implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public PlaceAPIProvider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(PlaceAPIProvider provider) {
+        this.provider = provider;
     }
 
     public String toString() {

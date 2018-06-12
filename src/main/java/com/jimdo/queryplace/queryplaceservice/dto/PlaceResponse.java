@@ -1,5 +1,6 @@
 package com.jimdo.queryplace.queryplaceservice.dto;
 
+import com.jimdo.queryplace.queryplaceservice.PlaceAPIProvider;
 import com.jimdo.queryplace.queryplaceservice.domain.Place;
 
 import java.util.List;
@@ -8,6 +9,7 @@ public class PlaceResponse {
     private List<String> html_attributions;
     private List<Place> results;
     private String status;
+    private PlaceAPIProvider provider;
 
     public List<String> getHtml_attributions() {
         return html_attributions;
@@ -31,6 +33,14 @@ public class PlaceResponse {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public PlaceAPIProvider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(PlaceAPIProvider provider) {
+        this.provider = provider;
     }
 
     public String toString() {
