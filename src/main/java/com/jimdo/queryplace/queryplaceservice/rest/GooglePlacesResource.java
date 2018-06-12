@@ -24,8 +24,8 @@ public class GooglePlacesResource {
     }
 
     @GetMapping("/placeDetails")
-    public PlaceDetailResponse getPlaceDetails(@RequestParam String query){
-        return places.getPlacesByQueryDetails(query);
+    public PlaceDetailResponse getPlaceDetails(@RequestParam String placeId){
+        return places.getPlacesByQueryDetails(placeId);
     }
 
     @GetMapping("/placeByradar")
